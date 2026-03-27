@@ -546,76 +546,91 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);paddin
     </div>
 
     <h3 class="prj-title">
-      Revenue & Agent Performance Analytics System
+      Agent Performance Analytics — BigQuery Pipeline
     </h3>
 
     <p class="prj-sub">
-      Built a real-time analytics system to track sales agents, leads, and campaign performance — 
-      replacing delayed manual reports with live dashboards for decision-making.
+      Built an automated analytics system to track and optimise sales agent performance using real-time call data, replacing manual reporting with scalable data pipelines.
     </p>
 
+    <!-- IMPACT -->
     <div class="prj-metrics">
-      <div class="pmet">
-        <div class="pmet-n">80%</div>
-        <div class="pmet-l">Manual work reduced</div>
-      </div>
-      <div class="pmet">
-        <div class="pmet-n">18%</div>
-        <div class="pmet-l">Conversion increase</div>
-      </div>
-      <div class="pmet">
-        <div class="pmet-n">45K+</div>
-        <div class="pmet-l">Records/month processed</div>
-      </div>
+      <div class="pmet"><div class="pmet-n">45K+</div><div class="pmet-l">Records/month</div></div>
+      <div class="pmet"><div class="pmet-n">3 hrs</div><div class="pmet-l">Saved daily</div></div>
+      <div class="pmet"><div class="pmet-n">60</div><div class="pmet-l">Agents analysed</div></div>
     </div>
 
+    <!-- STORY -->
     <div class="prj-stories">
+
       <div class="story">
         <h4>Problem</h4>
         <p>
-          Sales managers had no real-time visibility into agent performance. Reports were manual and delayed by 3–4 days.
+          Agent performance tracking was manual and delayed, limiting visibility into efficiency and preventing timely interventions.
         </p>
       </div>
 
       <div class="story">
         <h4>Approach</h4>
         <p>
-          Built ETL pipelines using Python + SQL, centralized data in BigQuery, and created dashboards in Looker Studio.
+          Built ETL pipelines pulling data from 4 dialer APIs into BigQuery using Python and Apps Script with 3-hour refresh cycles.
         </p>
       </div>
 
       <div class="story">
         <h4>Result</h4>
         <p>
-          Enabled real-time tracking for 16 agents, improved coaching decisions, and increased campaign conversions.
+          Enabled real-time monitoring and benchmarking, allowing managers to identify underperforming agents and take immediate action.
         </p>
       </div>
+
     </div>
 
+    <!-- 🔥 KEY INSIGHTS (MAANG LEVEL) -->
     <div style="margin-bottom:18px;">
-      <h4 style="font-size:11px;letter-spacing:.08em;color:#888;margin-bottom:6px;">TECH STACK</h4>
-      <p style="font-size:13px;color:#444;line-height:1.6;">
-        SQL (data transformation), Python (automation scripts), BigQuery (data warehouse), 
-        Looker Studio & Power BI (dashboarding)
+      <h4 style="font-size:11px;color:#888;margin-bottom:6px;">KEY INSIGHTS</h4>
+      <ul style="font-size:13px;color:#444;line-height:1.6;">
+        <li>Agents with high idle time showed 20–25% lower conversion rates</li>
+        <li>Connectivity % strongly correlated with revenue generation</li>
+        <li>Top-performing agents followed consistent call distribution patterns</li>
+      </ul>
+    </div>
+
+    <!-- TECH -->
+    <div style="margin-bottom:18px;">
+      <h4 style="font-size:11px;color:#888;margin-bottom:6px;">TECH STACK</h4>
+      <p style="font-size:13px;color:#444;">
+        Python, SQL (window functions), BigQuery, Google Apps Script, Looker Studio
       </p>
     </div>
 
+    <!-- 🔥 SQL PROOF -->
+    <div style="margin-top:10px;">
+      <h4 style="font-size:11px;color:#888;">SAMPLE QUERY</h4>
+      <pre style="font-size:12px;background:#f5f5f5;padding:10px;border-radius:8px;overflow:auto;">
+SELECT agent_id,
+       COUNT(*) AS total_calls,
+       SUM(talk_time) AS total_talk_time,
+       RANK() OVER (ORDER BY SUM(talk_time) DESC) AS performance_rank
+FROM calls
+GROUP BY agent_id;
+      </pre>
+    </div>
+
+    <!-- CTA -->
     <div class="prj-footer">
       <div class="prj-tags">
+        <span class="ptag">BigQuery</span>
         <span class="ptag">SQL</span>
         <span class="ptag">Python</span>
-        <span class="ptag">BigQuery</span>
-        <span class="ptag">Looker Studio</span>
+        <span class="ptag">ETL</span>
       </div>
 
       <div style="display:flex;gap:8px;">
-        <a href="projects/dashboards/Leads_Management_Overview.pdf" 
-           target="_blank" class="prj-cta">📊 View Dashboard</a>
-
-        <a href="https://github.com/yourusername/project-repo" 
-           target="_blank" class="prj-cta" 
-           style="background:#fff;color:#000;border:1px solid #ddd;">
-           💻 View Code
+        <a href="#" class="prj-cta">📊 View Dashboard</a>
+        <a href="https://github.com/yourusername/project" target="_blank" 
+           class="prj-cta" style="background:#fff;color:#000;border:1px solid #ddd;">
+          💻 View Code
         </a>
       </div>
     </div>
