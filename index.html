@@ -546,18 +546,18 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);paddin
     </div>
 
     <h3 class="prj-title">
-      Agent Performance Analytics — BigQuery Pipeline
+      Agent Performance Analytics — Real-Time BigQuery Pipeline
     </h3>
 
     <p class="prj-sub">
-      Built an automated analytics system to track and optimise sales agent performance using real-time call data, replacing manual reporting with scalable data pipelines.
+      Designed and deployed a real-time analytics system to track and optimise sales agent performance, replacing manual reporting with automated pipelines and enabling data-driven decision-making.
     </p>
 
-    <!-- IMPACT -->
+    <!-- 🔥 IMPACT -->
     <div class="prj-metrics">
       <div class="pmet"><div class="pmet-n">45K+</div><div class="pmet-l">Records/month</div></div>
       <div class="pmet"><div class="pmet-n">3 hrs</div><div class="pmet-l">Saved daily</div></div>
-      <div class="pmet"><div class="pmet-n">60</div><div class="pmet-l">Agents analysed</div></div>
+      <div class="pmet"><div class="pmet-n">60</div><div class="pmet-l">Agents tracked</div></div>
     </div>
 
     <!-- STORY -->
@@ -566,27 +566,43 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);paddin
       <div class="story">
         <h4>Problem</h4>
         <p>
-          Agent performance tracking was manual and delayed, limiting visibility into efficiency and preventing timely interventions.
+          Agent performance tracking relied on manual Excel reports delayed by 3–4 days, preventing timely intervention and optimisation.
         </p>
       </div>
 
       <div class="story">
         <h4>Approach</h4>
         <p>
-          Built ETL pipelines pulling data from 4 dialer APIs into BigQuery using Python and Apps Script with 3-hour refresh cycles.
+          Built ETL pipelines ingesting data from 4 dialer APIs into BigQuery using Python and Google Apps Script with a 3-hour refresh cadence.
         </p>
       </div>
 
       <div class="story">
         <h4>Result</h4>
         <p>
-          Enabled real-time monitoring and benchmarking, allowing managers to identify underperforming agents and take immediate action.
+          Enabled real-time performance monitoring and same-day intervention for underperforming agents, improving operational efficiency.
         </p>
       </div>
 
     </div>
 
-    <!-- 🔥 KEY INSIGHTS (MAANG LEVEL) -->
+    <!-- 🔥 SYSTEM DESIGN (MAANG SIGNAL) -->
+    <div style="margin-bottom:18px;">
+      <h4 style="font-size:11px;color:#888;margin-bottom:6px;">SYSTEM DESIGN</h4>
+      <p style="font-size:13px;color:#444;line-height:1.6;">
+        Data ingested from multiple dialer APIs → processed via Python ETL scripts → stored in BigQuery → transformed using SQL → visualised in Looker Studio dashboards for real-time monitoring.
+      </p>
+    </div>
+
+    <!-- 🔥 ANALYTICAL THINKING -->
+    <div style="margin-bottom:18px;">
+      <h4 style="font-size:11px;color:#888;margin-bottom:6px;">ANALYTICAL APPROACH</h4>
+      <p style="font-size:13px;color:#444;line-height:1.6;">
+        Designed a custom efficiency index combining talk time, connectivity %, and call outcomes to create a standardised performance benchmark across agents.
+      </p>
+    </div>
+
+    <!-- 🔥 KEY INSIGHTS -->
     <div style="margin-bottom:18px;">
       <h4 style="font-size:11px;color:#888;margin-bottom:6px;">KEY INSIGHTS</h4>
       <ul style="font-size:13px;color:#444;line-height:1.6;">
@@ -594,6 +610,14 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);paddin
         <li>Connectivity % strongly correlated with revenue generation</li>
         <li>Top-performing agents followed consistent call distribution patterns</li>
       </ul>
+    </div>
+
+    <!-- 🔥 DECISION IMPACT (CRITICAL) -->
+    <div style="margin-bottom:18px;">
+      <h4 style="font-size:11px;color:#888;margin-bottom:6px;">BUSINESS IMPACT</h4>
+      <p style="font-size:13px;color:#444;line-height:1.6;">
+        Insights were used by management to restructure agent schedules, reduce idle time, and optimise campaign allocation — enabling faster decisions and improving overall conversion efficiency.
+      </p>
     </div>
 
     <!-- TECH -->
@@ -609,8 +633,8 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);paddin
       <h4 style="font-size:11px;color:#888;">SAMPLE QUERY</h4>
       <pre style="font-size:12px;background:#f5f5f5;padding:10px;border-radius:8px;overflow:auto;">
 SELECT agent_id,
-       COUNT(*) AS total_calls,
        SUM(talk_time) AS total_talk_time,
+       SUM(CASE WHEN call_status = 'connected' THEN 1 ELSE 0 END) * 100.0 / COUNT(*) AS connectivity_pct,
        RANK() OVER (ORDER BY SUM(talk_time) DESC) AS performance_rank
 FROM calls
 GROUP BY agent_id;
@@ -637,7 +661,6 @@ GROUP BY agent_id;
 
   </div>
 </article>
-
       <!-- Project 2 -->
 <article class="prj-card rv">
   <div class="prj-body">
