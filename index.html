@@ -270,6 +270,45 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);paddin
   .bc-exp,.bc-skills,.bc-certs{grid-column:1;}
   .bc-stats,.bc-loc{grid-column:1;}
 }
+
+
+/* HERO FLEX LAYOUT */
+.hero-flex{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+/* LEFT CONTENT */
+.hero-left{
+  flex:1;
+  min-width:280px;
+}
+
+/* RIGHT IMAGE */
+.hero-right{
+  flex:0 0 220px;
+  display:flex;
+  justify-content:center;
+}
+
+.hero-right img{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #fff;
+  box-shadow:0 15px 40px rgba(0,0,0,0.12);
+  transition:transform 0.3s ease;
+}
+
+.hero-right img:hover{
+  transform:scale(1.05);
+}
+
+  
 </style>
 </head>
 <body>
