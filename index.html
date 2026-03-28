@@ -179,30 +179,7 @@ img{max-width:100%;}
 
 /* ── PROJECTS ── */
 .prj-sec{padding:56px 0;background:var(--bg);}
-.prj-grid{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:20px;
-}
-
-@media (max-width: 768px){
-  .prj-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-.prj-card{
-  display:flex;
-  flex-direction:column;
-  height:100%;
-}
-
-
-
-
-
-
-  
+.prj-grid{display:flex;flex-direction:column;gap:16px;}
 .prj-card{background:var(--card);border:1.5px solid rgba(255,255,255,0.85);border-radius:22px;overflow:hidden;transition:box-shadow .3s,transform .3s;box-shadow:0 2px 12px rgba(0,0,0,.07),0 1px 3px rgba(0,0,0,.05);}
 .prj-card:hover{box-shadow:0 18px 52px rgba(0,0,0,.12),0 4px 10px rgba(0,0,0,.06);transform:translateY(-4px);}
 .prj-body{padding:28px 32px 24px;}
