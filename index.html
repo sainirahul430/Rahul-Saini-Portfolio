@@ -80,8 +80,22 @@ img{max-width:100%;}
 
 /* ── BENTO GRID ── */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:10px;margin-bottom:10px;}
-.bcard{background:var(--card);border-radius:var(--r);border:1.5px solid rgba(255,255,255,0.85);padding:20px;transition:box-shadow .2s,transform .2s;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07),0 1px 3px rgba(0,0,0,.05);}
-.bcard:hover{box-shadow:0 10px 32px rgba(0,0,0,.11),0 2px 6px rgba(0,0,0,.06);transform:translateY(-3px);}
+.bcard{
+  background:rgba(255,255,255,0.6); /* glass effect */
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.7);
+  padding:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+  transition:all 0.3s ease;
+}
+
+.bcard:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.08);
+}
 .bcard-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:14px;}
 
 /* Experience card — spans 1 col, 2 rows */
@@ -346,8 +360,6 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);paddin
   }
 }
 
-
-<style>
 
 /* your existing CSS above */
 
