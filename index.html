@@ -13,13 +13,13 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --black:#0A0A0A;
-  --white:#FFFFFF;
-  --bg:#F5F4F0;
-  --card:#FFFFFF;
+  --black:#e8e8e8;
+  --white:#111111;
+  --bg:#161616;
+  --card:#1e1e1e;
   --accent:#FF5C00;
-  --muted:#888;
-  --border:rgba(0,0,0,0.08);
+  --muted:#666;
+  --border:rgba(255,255,255,0.08);
   --r:18px;
   --rsm:12px;
 }
@@ -431,9 +431,90 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);paddin
 
 
 body{
-  background: radial-gradient(circle at 20% 20%, #f5f5f5, #eaeaea);
+  background: #0d0d0d;
+  color: #e8e8e8;
 }
 
+
+
+.side-nav{
+  position:fixed;
+  left:28px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:50;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.side-nav-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 0;
+  cursor:pointer;
+  position:relative;
+}
+.side-nav-item:not(:last-child)::after{
+  content:'';
+  position:absolute;
+  left:5px;
+  top:22px;
+  width:1px;
+  height:calc(100% - 6px);
+  background:rgba(255,255,255,0.12);
+}
+.side-dot{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  border:1.5px solid rgba(255,255,255,0.25);
+  background:transparent;
+  flex-shrink:0;
+  transition:all .2s;
+}
+.side-nav-item.active .side-dot{
+  background:#3b82f6;
+  border-color:#3b82f6;
+}
+.side-label{
+  font-size:12px;
+  color:rgba(255,255,255,0.35);
+  white-space:nowrap;
+  opacity:0;
+  transform:translateX(-4px);
+  transition:all .2s;
+}
+.side-nav-item:hover .side-label,
+.side-nav-item.active .side-label{
+  opacity:1;
+  transform:none;
+  color:rgba(255,255,255,0.8);
+}
+@media(max-width:900px){.side-nav{display:none;}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 </style>
 </head>
 <body>
@@ -460,6 +541,22 @@ body{
 </nav>
 
 <div class="page">
+
+<div class="side-nav" id="sideNav">
+  <a href="#hero" class="side-nav-item active">
+    <div class="side-dot"></div><span class="side-label">Home</span>
+  </a>
+  <a href="#experience" class="side-nav-item">
+    <div class="side-dot"></div><span class="side-label">Experience</span>
+  </a>
+  <a href="#projects" class="side-nav-item">
+    <div class="side-dot"></div><span class="side-label">Projects</span>
+  </a>
+  <a href="#contact" class="side-nav-item">
+    <div class="side-dot"></div><span class="side-label">Contact</span>
+  </a>
+</div>
+
 
 <!-- HERO -->
 
@@ -1057,6 +1154,19 @@ const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.tar
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{let c='';document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-80)c=s.id;});document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+c));},{passive:true});
 function tFaq(el){const item=el.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');}
+
+// Side nav active state
+window.addEventListener('scroll', () => {
+  let current = 'hero';
+  document.querySelectorAll('section[id]').forEach(s => {
+    if (window.scrollY >= s.offsetTop - 200) current = s.id;
+  });
+  document.querySelectorAll('.side-nav-item').forEach(item => {
+    item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+  });
+}, {passive:true});
+
+
 </script>
 </body>
 </html>
