@@ -130,19 +130,63 @@ img{max-width:100%;}
 .hero-sub{font-size:15px;color:var(--text2);line-height:1.65;max-width:480px;margin:20px 0 28px;}
 .hero-sub strong{color:var(--text);}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:52px;}
+/* Primary CTA */
 .btn-dark{
-  background:#fff;color:#111;border-radius:99px;padding:12px 24px;
-  font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;
-  display:inline-flex;align-items:center;gap:7px;transition:all .2s;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#111111,#2A2A2A);
+  color:#F7F6F3;
+  border-radius:99px;
+  padding:12px 24px;
+  font-size:14px;
+  font-weight:600;
+  font-family:'DM Sans',sans-serif;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  transition:all .25s;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+  cursor:pointer;
 }
-.btn-dark:hover{background:#e8e8e8;transform:translateY(-2px);}
+
+.btn-dark:hover{
+  background:linear-gradient(135deg,#222,#333);
+  transform:translateY(-2px);
+}
+
+
+/* Secondary buttons */
 .btn-outline{
-  background:transparent;color:var(--text);
-  border:1.5px solid rgba(255,255,255,0.15);border-radius:99px;
-  padding:11px 22px;font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;
-  display:inline-flex;align-items:center;gap:7px;transition:all .2s;cursor:pointer;
+  background:#FFFFFF;
+  color:#2D2D2D;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:99px;
+  padding:11px 22px;
+  font-size:14px;
+  font-weight:500;
+  font-family:'DM Sans',sans-serif;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  transition:all .25s;
+  cursor:pointer;
 }
-.btn-outline:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.3);}
+
+.btn-outline:hover{
+  background:#F2F0EC;
+  border-color:rgba(0,0,0,.12);
+  transform:translateY(-2px);
+}
+
+/* Download Resume button only */
+.hero-actions a:last-child{
+  background:rgba(255,92,0,.08);
+  color:#CC4A00;
+  border:1px solid rgba(255,92,0,.18);
+}
+
+.hero-actions a:last-child:hover{
+  background:rgba(255,92,0,.14);
+}
 
 /* ── BENTO GRID ── */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:10px;margin-bottom:10px;}
